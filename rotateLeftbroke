@@ -9,3 +9,12 @@ public int[] rotateLeft(int[] nums) {
 
   return sorted;
 }
+/*
+Given an array of ints, return an array with the elements "rotated left" so {1, 2, 3} yields {2, 3, 1}. 
+The length of the array will be at least 1.
+
+This code does not work. It also behaves differently in different environments. Changing the instantiation of sorted to:
+int[] sorted = new int[len];
+fixed it. Also, storing the first value from nums in a variable and assigning it to the last value of sorted after the loop worked.
+Placing the statement sorted[len-1] = nums[0]; before the loop results in the second to last value of sorted being wrong. 
+Placing it after the loop results in the last value being wrong. It seems that nums is being altered in some way. How?*/
