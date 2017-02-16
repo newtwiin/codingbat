@@ -17,4 +17,6 @@ This code does not work. It also behaves differently in different environments. 
 int[] sorted = new int[len];
 fixed it. Also, storing the first value from nums in a variable and assigning it to the last value of sorted after the loop worked.
 Placing the statement sorted[len-1] = nums[0]; before the loop results in the second to last value of sorted being wrong. 
-Placing it after the loop results in the last value being wrong. It seems that nums is being altered in some way. How?*/
+Placing it after the loop results in the last value being wrong. This doesn't work because I am not actually making a new
+array called sorted that has the same values as nums. I'm actually giving nums a new handle, and they are really the same
+data, in the same location.*/
