@@ -1,0 +1,20 @@
+Given a list of ints, return the sum of the values within 5 of zero, from -5 to +5, inclusive.
+
+sumNearZero([-9, 9, 10, 3, 1, 6]) → 4
+sumNearZero([3, 0, 5]) → 8
+sumNearZero([10, -2, -3, 7]) → -5
+
+public int sumNearZero(int[] list) {
+  
+  int limit = 5;
+  int sum = 0;
+  int len = list.length;
+  
+  for(int i = 0; i < len; i++){
+    if(Math.abs(list[i]) <= limit){
+      sum += list[i];
+    }
+  }
+  
+  return sum;
+}
