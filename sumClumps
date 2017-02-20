@@ -1,0 +1,40 @@
+A "clump" in an array is a series of two or more adjacent elements of the same value. 
+Return the sum of the elements that appear in clumps in the given array.
+
+sumClumps([1, 2, 2, 3, 4, 4]) → 12
+sumClumps([1, 1, 2, 1, 1]) → 4
+sumClumps([1, 1, 1, 1, 1]) → 5
+
+I liked this one
+
+public int sumClumps(int[] nums) {
+  int len = nums.length;
+  boolean isClumped = false;
+
+  int sum = 0;
+  
+  if(len < 2){
+    return sum;
+  }
+  
+    int temp = nums[0];
+  
+  if (nums[1] == temp){
+      isClumped = true;
+      sum = temp;
+  }
+  for(int i = 1; i < len; i++){
+    if(nums[i] == temp){
+      if(! isClumped){
+        sum += temp;
+        isClumped = true;
+      }
+      sum += temp;
+    } else {
+      isClumped = false;
+      temp = nums[i];
+    }
+  }
+  
+  return sum;
+}
