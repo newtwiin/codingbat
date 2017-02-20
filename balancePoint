@@ -1,0 +1,34 @@
+
+The "balance point" is point where an int array can be split so that the sum of the numbers on one side is equal to 
+the sum of the numbers on the other. (The balance point is included in the "second" sub-array.) Given a non-empty array,
+return the balance point, or -1, in no balance point exists for the given array.
+
+I actually like the way I did this one
+
+balancePoint([1, 1, 1, 2, 1]) → 3
+balancePoint([2, 1, 1, 2, 1]) → -1
+balancePoint([10, 10]) → 1
+
+public int balancePoint(int[] nums) {
+  int len = nums.length;
+  int bpoint;
+  int lsum;
+  int rsum;
+  int index = 0;
+  
+  for(int i = 1; i < len; i++){
+    bpoint = i;
+    lsum = 0;
+    rsum = 0;
+    for(int r = i; r < len; r++){
+      rsum += nums[r];
+    }
+    for(int l = 0; l < i; l++ ){
+      lsum += nums[l];
+    }
+    if(rsum == lsum){
+      return bpoint;
+    }
+  }
+  return -1;
+}
