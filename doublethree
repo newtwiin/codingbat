@@ -1,0 +1,49 @@
+
+Given an array of ints, return true if every 3 that appears in the array is next to another 3.
+
+/*
+VERY UNGRACEFUL
+*/
+
+public boolean doubleThree(int[] nums) {
+  int len = nums.length;
+  boolean friends = true;
+  
+  if(len == 1 && nums[0] == 3){
+    return false;
+  }
+
+  if(len == 2){
+    if(nums[0] == nums[1]){
+      return true;
+    } else {
+      if(nums[0] == 3 || nums[1] == 3){
+      return false;
+      }
+    }
+  
+  }
+  
+  for(int i = 1; i < len-1; i++){
+    if(nums[i] == 3){
+      if(nums[i-1] == 3 || nums[i+1] ==3){
+        friends = true;
+        
+      } else {
+        return false;
+      }
+    }
+    
+    if(nums[len-1] == 3 && nums[len-2] != 3 ){
+      return false;
+
+    }
+    if(nums[0] == 3 && nums[1] != 3 ){
+      return false;
+
+    }
+    
+    
+  }
+  return friends;
+}
