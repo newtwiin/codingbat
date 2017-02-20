@@ -1,0 +1,31 @@
+
+Given a list of ints and a number n, return the contents of list omitting the value n. 
+For example, if list = {1, 2, 3, 2} and n = 2, the return would be {1, 3}.
+
+removeN([1, 2, 3, 2], 2) → [1, 3]
+removeN([4, 5, 4, 4, 8, 2, 4], 4) → [5, 8, 2]
+removeN([9, 8, 7, 9, 4], 8) → [9, 7, 9, 4]
+
+public int[] removeN(int[] list, int n) {
+  int ncount = 0;
+  int len = list.length;
+  
+  for(int i = 0; i<len; i++){
+    if(list[i] == n){
+      ncount++;
+    }
+  }
+  
+  int[] nless = new int[len-ncount];
+  
+  ncount = 0;
+  
+  for(int i = 0; i < len; i++){
+    if(list[i] != n){
+      nless[ncount] = list[i];
+      ncount++;
+    }
+  }
+  
+  return nless;
+}
