@@ -1,0 +1,41 @@
+Given a list of int values, return the greatest negative value. If there are no negative values, return zero.
+
+greatestNegative([0, -9, -12, 6, 10, -15, 7]) → -9
+greatestNegative([-3, -2, 9]) → -2
+greatestNegative([-10, 8, -9, -15, 1, -4, 7, -1, 13]) → -1
+
+public int greatestNegative(int[] list) {
+  
+  int ncount = 0;
+  int len = list.length;
+  
+  for(int i = 0; i<len; i++){
+    if(list[i] < 0){
+      ncount++;
+    }
+  }
+  if(ncount == 0){
+    return 0;
+  }
+  int[] negs = new int[ncount];
+  
+  ncount = 0;
+  
+  for(int i = 0; i < len; i++){
+    if(list[i] < 0){
+      negs[ncount] = list[i];
+      ncount++;
+    }
+  }
+  
+  int max = negs[0];
+  
+  for(int i = 0; i < ncount; i++){
+    if(negs[i] > max){
+        max = negs[i];
+      }
+      
+  }
+  
+  return max;
+}
