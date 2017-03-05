@@ -1,0 +1,55 @@
+public int maxRun(String s) {
+  char [] alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 
+  'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v' ,'w','x', 'y','z'};
+  char []vowel = {'a','e','i','o','u'};
+  char[] runner = s.toCharArray();
+  if(runner.length < 2) return runner.length;
+  int prev = getDex(runner[0], alphabet);
+  int prevV = getDex(runner[0], vowel);
+  int prevvV= 0;
+  int count = 0;
+  int maxCount = 0;
+  if(getDex(runner[0], alphabet) ==0 ||getDex(runner[0], vowel) == 0){
+      maxCount =1;
+    
+  }
+  for(int i = 1; i< runner.length; i++){
+     if(getDex(runner[i], alphabet) >= prev ||getDex(runner[i], vowel) >= prevV){
+       count++;
+       if(count >= maxCount){
+          maxCount = count;
+       }
+     }
+      else{
+        if(count >= maxCount){
+          maxCount = count;
+          
+        }
+        
+       
+     }
+     if(prev > getDex(runner[i], alphabet )){
+            
+            count = 0;
+          }
+  prev = getDex(runner[i], alphabet); 
+  prevV = getDex(runner[i], vowel);
+  prevvV= prevV;
+  } 
+  if(count >= maxCount){
+          maxCount = count;
+  
+  }
+  if(prevvV >= prev) maxCount++;
+  return maxCount;
+  
+}
+public int getDex(char c, char [] alphabet){
+  
+  for(int i = 0; i < alphabet.length; i++){
+    if(c == alphabet[i]){
+      return i;
+    }
+  }
+  return c*-2;
+}
